@@ -2,31 +2,18 @@
 	include 'dbConfig.php'; 
 	session_start();
 
-    if(isset($_GET['id'])){
-        $id = $_GET['id'];
-        
-        $db->query("DELETE FROM employee WHERE emp_id=".$id);
-
-
-        //$db->query("CREATE TRIGGER pastemployee ON employee BEFORE DELETE  FOR EACH ROW INSERT INTO pastemployeedetails(emp_id,name,phone,address) VALUES (OLD.emp_id, OLD.name, OLD.phone, OLD.address) ");
-
-
-
-    }
-	
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Add Collector</title>
+	<title>approve orders</title>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
-
+    
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -60,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin</a>
+                <a class="navbar-brand" href="index.html">ECORICO</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -158,7 +145,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -179,8 +166,7 @@
                                 <a href="viewemployee.php">View Employeer</a>
                             </li>
                         </ul>
-
-                        <li>
+                         <li>
                         <a href="pendingorders.php" data-toggle="collapse" data-target="#demo"></i> Pending Orders </a>
                         
                     </li>
@@ -203,37 +189,37 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            View Employee
+                            Approve Orders
                         </h1>
                     </div>
                 </div>
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-lg-6">
-                        <h2>Employee Details</h2>
+                        
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>EMP_ID</th>
-                                        <th>Name</th>
-                                        <th>Phone</th>
-                                        <th>Address</th>
-                                        <th>Operation</th>
+                                        <th>EwasteCentre_ID</th>
+                                        <th>User_ID</th>
+                                        <th>Quantity</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php 
-                                        $query = $db->query("SELECT * FROM employee");
+
+                                        $query = $db->query("SELECT * FROM pendingorders");
                                         if($query->num_rows > 0){ 
                                             while($row = $query->fetch_assoc()){
                                     ?>
                                     <tr>
-                                        <td><?php echo $row['emp_id']; ?></td>
-                                        <td><?php echo $row['name']; ?></td>
-                                        <td><?php echo $row['phone']; ?></td>
-                                        <td><?php echo $row['address']; ?></td>
-                                        <td><a href="viewemployee.php?id=<?php echo $row['emp_id']; ?>" class="btn btn-xs btn-danger">Delete</a></td>
+                                        <td><?php echo $row['ect_id']; ?></td>
+                                        <td><?php echo $row['ut_id']; ?></td>
+                                        <td><?php echo $row['prod_quant']; ?></td>
+                                        
+                                        
                                     </tr>
                                     <?php } } else {?>
                                     <tr><td>No Employee(s) found</td></tr>

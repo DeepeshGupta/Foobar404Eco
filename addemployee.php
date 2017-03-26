@@ -4,14 +4,13 @@
     
     if(isset($_POST['submit'])){
 
-        $fullname = $_POST['name'];        
-        $phone = $_POST['phone'];
-        $address = $_POST['address'];
+        $fullname = mysqli_real_escape_string($db, $_POST['name']);        
+        $phone = mysqli_real_escape_string($db, $_POST['phone']);
+        $address = mysqli_real_escape_string($db, $_POST['address']);
         
-        $db->query("INSERT INTO employee (name,phone,address) VALUES ('".$fullname."','".$phone."','".$address."')");
+        $db->query("INSERT INTO employee (name,phone,address) VALUES ('$fullname','$phone','$address')");
 
     }
-    
 ?>
 <!DOCTYPE html>
 <html>
@@ -130,6 +129,15 @@
                                 <a href="viewemployee.php">View Employee</a>
                             </li>
                         </ul>
+
+                        <li>
+                        <a href="pendingorders.php" data-toggle="collapse" data-target="#demo"></i> Pending Orders </a>
+                        
+                    </li>
+
+                    <li>
+                        <a href="approveorder.php" data-toggle="collapse" data-target="#demo"></i> Approve Orders </a>
+                    </li>
                     </li>
         
                 </ul>
@@ -161,7 +169,7 @@
                             
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input class="form-control" name="phone" required>
+                                <input class="form-control" type="number" name="phone" required>
                             </div>
                             <div class="form-group">
                                 <label>Address</label>

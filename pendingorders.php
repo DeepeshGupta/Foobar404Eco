@@ -1,5 +1,28 @@
 <?php 
+    include 'dbConfig.php'; 
     session_start();
+
+    if(isset($_GET['idn'])){
+        $id = $_GET['idn'];
+        
+        $db->query("DELETE FROM pendingorders WHERE prod_id=".$id);
+    }
+
+    if(isset($_GET['idy'])){
+        
+
+        if($id = $_GET['idy']){;
+            $query=$db->query("SELECT * FROM pendingorders")->fetch_assoc();
+            $ut_id= $query['ut_id'];
+            $prod_quant=$query['prod_quant'];
+
+        $db->query("INSERT INTO approveorders (ut_id, prod_quant) VALUES('".$ut_id."','".$prod_quant."') ");
+    }
+        
+    }
+    
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -128,8 +151,12 @@
                     </li>
 
                     <li>
-                        <a href="pendingorders.php" data-toggle="collapse" data-target="#demo"></i> Pending Employee </a>
+                        <a href="pendingorders.php" data-toggle="collapse" data-target="#demo"></i> Pending Orders </a>
                         
+                    </li>
+
+                    <li>
+                        <a href="approveorder.php" data-toggle="collapse" data-target="#demo"></i> Approve Orders </a>
                     </li>
         
                 </ul>
@@ -145,19 +172,43 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Dashboard <small>Statistics Overview</small>
-                        </h1>
-                    </div>
-                </div>
-                <!-- /.row -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Hello<div class="col-lg-12"></h1>
-                    </div>
-                </div>
-                
-                <!-- /.row -->
+                           Pending Orders</h1>
 
+                           <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Ewaste Center ID</th>
+                                        <th>Quantity</th>
+                                        <th>Operation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php 
+
+                                        $query = $db->query("SELECT * FROM pendingorders");
+                                        if($query->num_rows > 0){ 
+                                            while($row = $query->fetch_assoc()){
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $row['ect_id']; ?></td>
+                                        <td><?php echo $row['prod_quant']; ?></td>
+          <td><a href="pendingorders.php?idy=<?php echo $row['prod_id']; ?>" class="btn btn-xs btn-success">Yes</a>
+          <a href="pendingorders.php?idn=<?php echo $row['prod_id']; ?>" class="btn btn-xs btn-danger">No</a></td>
+          
+                                    </tr>
+                                    <?php } } else {?>
+                                    <tr><td>No Pending Orders Found</td></tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+                    </div>
+                </div>
+               
             </div>
             <!-- /.container-fluid -->
 
