@@ -210,7 +210,7 @@
                                 <tbody>
                                     <?php 
 
-                                        $query = $db->query("SELECT * FROM pendingorders");
+                                        $query = $db->query("SELECT * FROM approveorders");
                                         if($query->num_rows > 0){ 
                                             while($row = $query->fetch_assoc()){
                                     ?>

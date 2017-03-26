@@ -8,16 +8,17 @@
         $db->query("DELETE FROM pendingorders WHERE prod_id=".$id);
     }
 
-    if(isset($_GET['idy'])){
-        
+    if(isset($_GET['idy'])){       
 
-        if($id = $_GET['idy']){;
+        $id = $_GET['idy'];
             $query=$db->query("SELECT * FROM pendingorders")->fetch_assoc();
+            $ect_id= $query['ect_id'];
             $ut_id= $query['ut_id'];
             $prod_quant=$query['prod_quant'];
 
-        $db->query("INSERT INTO approveorders (ut_id, prod_quant) VALUES('".$ut_id."','".$prod_quant."') ");
-    }
+        $db->query("INSERT INTO approveorders (ect_id, ut_id, prod_quant) VALUES('".$ect_id."','".$ut_id."','".$prod_quant."') ");
+        $db->query("DELETE FROM pendingorders WHERE prod_id=".$id);
+    
         
     }
     
