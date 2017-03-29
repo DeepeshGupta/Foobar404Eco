@@ -2,23 +2,7 @@
 	include 'dbConfig.php'; 
 	session_start();
 
-    if(isset($_GET['id'])){
-        $id = $_GET['id'];    
-
-           $query1= $db->query("SELECT * FROM employee WHERE emp_id=".$id)->fetch_assoc();
-           $empid=$query1['emp_id'];
-           $name=$query1['name'];
-           $phone=$query1['phone'];
-           $address=$query1['address'];
-
-           $db->query("INSERT INTO pastemployeedetails (emp_id, name, phone, address) VALUES ('".$empid."' , '".$name."','".$phone."','".$address."')");
-
-
-           $db->query("DELETE FROM employee WHERE emp_id=".$id);
-
-           
-    }
-	
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -174,7 +158,7 @@
                     <li class="active">
                         <a href="home.php"><i class="fa fa-fw fa-dashboard"></i>Home</a>
                     </li>
-                     <li>
+                    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Manage Employee <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
@@ -196,6 +180,7 @@
                     <li>
                         <a href="oldemployee.php" data-toggle="collapse" data-target="#demo"></i> Past Employee </a>
                     </li>
+
                     </li>
         
                 </ul>
@@ -211,14 +196,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            View Employee
+                            Past Employee Details
                         </h1>
                     </div>
                 </div>
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-lg-6">
-                        <h2>Employee Details</h2>
+                        
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>
@@ -227,12 +212,12 @@
                                         <th>Name</th>
                                         <th>Phone</th>
                                         <th>Address</th>
-                                        <th>Operation</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php 
-                                        $query = $db->query("SELECT * FROM employee");
+                                        $query = $db->query("SELECT * FROM pastemployeedetails");
                                         if($query->num_rows > 0){ 
                                             while($row = $query->fetch_assoc()){
                                     ?>
@@ -241,7 +226,7 @@
                                         <td><?php echo $row['name']; ?></td>
                                         <td><?php echo $row['phone']; ?></td>
                                         <td><?php echo $row['address']; ?></td>
-  <td><a href="viewemployee.php?id=<?php echo $row['emp_id']; ?>" class="btn btn-xs btn-danger">Delete</a></td>
+  
                                     </tr>
                                     <?php } } else {?>
                                     <tr><td>No Employee(s) found</td></tr>
