@@ -47,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">ECORICO</a>
+                <a class="navbar-brand" href="home.php">ECORICO</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -186,43 +186,43 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <div class="row">
+               <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Approve Orders
-                        </h1>
-                    </div>
-                </div>
-                <!-- /.row -->
-                <div class="row">
-                    <div class="col-lg-6">
-                        
-                        <div class="table-responsive">
+                           Approve Orders</h1>
+
+                           <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>EwasteCentre_ID</th>
+                                        <th>Date & Time</th>                                        
                                         <th>User_ID</th>
-                                        <th>Quantity</th>
+                                        <th>User_Trans_ID</th>
+                                        <th>Ewaste_ID</th>
+                                        <th>Ewaste_Trans_ID</th>
+                                        <th>Product Quantity</th>
                                         
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php 
 
-                                        $query = $db->query("SELECT * FROM approveorders");
+                                        $query = $db->query("SELECT * FROM approveorder");
                                         if($query->num_rows > 0){ 
                                             while($row = $query->fetch_assoc()){
                                     ?>
                                     <tr>
-                                        <td><?php echo $row['ect_id']; ?></td>
-                                        <td><?php echo $row['ut_id']; ?></td>
-                                        <td><?php echo $row['prod_quant']; ?></td>
+                                        <td><?php echo $row['datetime']; ?></td>
+                                        <td><?php echo $row['uid']; ?></td>
+                                        <td><?php echo $row['utid']; ?></td>
+                                        <td><?php echo $row['eid']; ?></td>
+                                        <td><?php echo $row['etid']; ?></td>
+                                        <td><?php echo $row['productdeatils']; ?></td>
                                         
                                         
                                     </tr>
                                     <?php } } else {?>
-                                    <tr><td>No Employee(s) found</td></tr>
+                                    <tr><td colspan="6">No details found</td></tr>
                                     <?php } ?>
                                 </tbody>
                             </table>

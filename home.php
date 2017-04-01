@@ -1,3 +1,4 @@
+
 <?php 
     include 'dbConfig.php'; 
     session_start();
@@ -5,23 +6,21 @@
     if(isset($_GET['idn'])){
         $id = $_GET['idn'];
         
-        $db->query("DELETE FROM pendingorders WHERE prod_id=".$id);
+        $db->query("DELETE FROM pendingdetails WHERE uid=".$id);
     }
 
-    if(isset($_GET['idy'])){
-        
+    if(isset($_GET['idy'])){       
 
-        if($id = $_GET['idy']){;
-            $query=$db->query("SELECT * FROM pendingorders")->fetch_assoc();
+        $id = $_GET['idy'];
+            $query=$db->query("SELECT * FROM pen")->fetch_assoc();
+            $ect_id= $query['ect_id'];
             $ut_id= $query['ut_id'];
             $prod_quant=$query['prod_quant'];
 
-        $db->query("INSERT INTO approveorders (ut_id, prod_quant) VALUES('".$ut_id."','".$prod_quant."') ");
-    }
-        else{
-
-            echo "You have alread approved this order";
-        }
+        $db->query("INSERT INTO approveorders (ect_id, ut_id, prod_quant) VALUES('".$ect_id."','".$ut_id."','".$prod_quant."') ");
+        $db->query("DELETE FROM pendingorders WHERE prod_id=".$id);
+    
+        
     }
     
 
@@ -181,29 +180,37 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Ewaste Center ID</th>
-                                        <th>Quantity</th>
-                                        <th>Operation</th>
+                                        <th>Date & Time</th>                                        
+                                        <th>User_ID</th>
+                                        <th>User_Trans_ID</th>
+                                        <th>Ewaste_ID</th>
+                                        <th>Ewaste_Trans_ID</th>
+                                        <th>Product Quantity</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php 
 
-                                        $query = $db->query("SELECT * FROM pendingorders");
+                                        $query = $db->query("SELECT * FROM pendingdetails");
                                         if($query->num_rows > 0){ 
                                             while($row = $query->fetch_assoc()){
                                     ?>
                                     <tr>
-                                        <td><?php echo $row['ect_id']; ?></td>
-                                        <td><?php echo $row['prod_quant']; ?></td>
-          <td><a href="pendingorders.php?idy=<?php echo $row['prod_id']; ?>" class="btn btn-xs btn-success">Yes</a>
-          <a href="pendingorders.php?idn=<?php echo $row['prod_id']; ?>" class="btn btn-xs btn-danger">No</a></td>
+                                        <td><?php echo $row['datetime']; ?></td>
+                                        <td><?php echo $row['uid']; ?></td>
+                                        <td><?php echo $row['utid']; ?></td>
+                                        <td><?php echo $row['eid']; ?></td>
+                                        <td><?php echo $row['etid']; ?></td>
+                                        <td><?php echo $row['productdeatils']; ?></td>
+          <td><a href="pendingorders.php?idy=<?php echo $row['uid']; ?>" class="btn btn-xs btn-success">Yes</a>
+          <a href="pendingorders.php?idn=<?php echo $row['uid']; ?>" class="btn btn-xs btn-danger">No</a></td>
           
                                     </tr>
                                     <?php } } else {?>
-                                    <tr><td>No Pending Orders Found</td></tr>
+                                    <tr><td colspan="7">No Pending Orders Found</td></tr>
                                     <?php } ?>
-                                </tbody>
+                                </tbody>                                
                             </table>
                         </div>
 
