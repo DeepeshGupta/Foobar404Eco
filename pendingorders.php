@@ -180,9 +180,13 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Ewaste Center ID</th>
-                                        <th>Quantity</th>
-                                        <th>Operation</th>
+                                        <th>Date & Time</th>                                        
+                                        <th>User_ID</th>
+                                        <th>User_Trans_ID</th>
+                                        <th>Ewaste_ID</th>
+                                        <th>Ewaste_Trans_ID</th>
+                                        <th>Product Details</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -200,9 +204,9 @@
           
                                     </tr>
                                     <?php } } else {?>
-                                    <tr><td>No Pending Orders Found</td></tr>
+                                    <tr><td colspan="7">No Pending Orders Found</td></tr>
                                     <?php } ?>
-                                </tbody>
+                                </tbody>                                
                             </table>
                         </div>
 
