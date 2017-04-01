@@ -1,3 +1,4 @@
+
 <?php 
     include 'dbConfig.php'; 
     session_start();

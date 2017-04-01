@@ -212,7 +212,9 @@
                                         <th>Name</th>
                                         <th>Phone</th>
                                         <th>Address</th>
-                                        
+                                        <th>Date Of Joining</th>
+                                        <th>Date Of Laving</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -226,15 +228,17 @@
                                         <td><?php echo $row['name']; ?></td>
                                         <td><?php echo $row['phone']; ?></td>
                                         <td><?php echo $row['address']; ?></td>
+                                        <td><?php echo $row['doj']; ?></td>
+                                        <td><?php echo $row['dor']; ?></td>
   
                                     </tr>
                                     <?php } } else {?>
-                                    <tr><td>No Employee(s) found</td></tr>
+                                    <tr><td>No Employee(s) found
                                     <?php } ?>
-                                </tbody>
+                                </tbody></td></tr>
                             </table>
                         </div>
-                    </div>  
+                    </div>  </td></tr>
                 </div>
                 
                 <!-- /.row -->

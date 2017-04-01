@@ -1,3 +1,4 @@
+
 <?php
     
 	$dbHost = 'shareddb1a.hosting.stackcp.net';

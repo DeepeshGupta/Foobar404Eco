@@ -10,8 +10,9 @@
            $name=$query1['name'];
            $phone=$query1['phone'];
            $address=$query1['address'];
+           $doj=$query1['doj'];
 
-           $db->query("INSERT INTO pastemployeedetails (emp_id, name, phone, address) VALUES ('".$empid."' , '".$name."','".$phone."','".$address."')");
+           $db->query("INSERT INTO pastemployeedetails (emp_id, name, phone, address, doj, dor ) VALUES ('".$empid."' , '".$name."','".$phone."','".$address."','".$doj."', CURDATE())");
 
 
            $db->query("DELETE FROM employee WHERE emp_id=".$id);
@@ -227,7 +228,9 @@
                                         <th>Name</th>
                                         <th>Phone</th>
                                         <th>Address</th>
-                                        <th>Operation</th>
+                                        <th>Date of Joining</th>
+
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -241,12 +244,16 @@
                                         <td><?php echo $row['name']; ?></td>
                                         <td><?php echo $row['phone']; ?></td>
                                         <td><?php echo $row['address']; ?></td>
+                                        <td><?php echo $row['doj']; ?></td>
+                                        
   <td><a href="viewemployee.php?id=<?php echo $row['emp_id']; ?>" class="btn btn-xs btn-danger">Delete</a></td>
                                     </tr>
                                     <?php } } else {?>
-                                    <tr><td>No Employee(s) found</td></tr>
+                                    <tr><td>No Employee(s) found
                                     <?php } ?>
+                                    </td></tr>
                                 </tbody>
+
                             </table>
                         </div>
                     </div>  

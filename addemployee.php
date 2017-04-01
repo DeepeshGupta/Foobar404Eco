@@ -1,15 +1,15 @@
 <?php 
     session_start();
     include 'dbConfig.php'; 
-    
-    
+        
     if(isset($_POST['submit'])){
 
         $fullname = mysqli_real_escape_string($db, $_POST['name']);        
         $phone = mysqli_real_escape_string($db, $_POST['phone']);
         $address = mysqli_real_escape_string($db, $_POST['address']);
+        $doj = mysqli_real_escape_string($db, $_POST['doj']);
         
-        $db->query("INSERT INTO employee (name,phone,address) VALUES ('$fullname','$phone','$address')");
+        $db->query("INSERT INTO employee (name,phone,address, doj) VALUES ('$fullname','$phone','$address' , '$doj')");
 
     }
 ?>
@@ -63,30 +63,33 @@
                 </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
+                    
                     <li class="active">
                         <a href="home.php"><i class="fa fa-fw fa-dashboard"></i>Home</a>
                     </li>
+
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"> Manage Exployee <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"></i> Manage Employee <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
                                 <a href="addemployee.php">Add Employee</a>
                             </li>
+                            
                             <li>
                                 <a href="viewemployee.php">View Employee</a>
                             </li>
                         </ul>
+                    </li>
 
-                        <li>
+                    <li>
                         <a href="pendingorders.php" data-toggle="collapse" data-target="#demo"></i> Pending Orders </a>
                         
                     </li>
 
                     <li>
                         <a href="approveorder.php" data-toggle="collapse" data-target="#demo"></i> Approve Orders </a>
-                    </li>
                     </li>
         
                 </ul>
@@ -122,13 +125,20 @@
                             </div>
                             <div class="form-group">
                                 <label>Address</label>
-                                <input class="form-control" name="address" required>
+                                <input class="form-control" name="address"  required>
                             </div>
+
+                            <div class="form-group">
+                                <label>Date of Joining</label>
+                                <input class="form-control" name="doj" type="date"  required>
+                            </div>
+
+                          
                             <input class="btn btn-lg btn-primary" type="submit" name="submit" value="Add Employee">
                             <a href="home.php" class="btn btn-lg btn-primary">Back</a>
                         </form>
-                        
                     </div>
+                    </div>  
                 </div>
                 
                 <!-- /.row -->
