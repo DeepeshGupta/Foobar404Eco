@@ -181,6 +181,60 @@
                         <a href="oldemployee.php" data-toggle="collapse" data-target="#demo"></i> Past Employee </a>
                     </li>
 
+                     <li>
+                        <a href="oldemployee.php" data-toggle="collapse" data-target="#demo"></i> Past Employee </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1"></i> Guidelines<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo1" class="collapse">
+                            <li>
+                                <a href="guide1.php">Bulk</a>
+                            </li>
+                            <li>
+                                <a href="guide2.php">Collection Center</a>
+                            </li>
+
+                            <li>
+                                <a href="guide3.php">Collection Storage</a>
+                            </li>
+
+                            <li>
+                                <a href="guide4.php">Environmental_dismental</a>
+                            </li>
+
+
+                            <li>
+                                <a href="guide5.php">EPR</a>
+                            </li>
+
+
+                             <li>
+                                <a href="guide6.php">Recyclier</a>
+                            </li>
+
+
+                             <li>
+                                <a href="guide7.php">Refurnisher</a>
+                            </li>
+
+
+                             <li>
+                                <a href="guide8.php">Refurnisher</a>
+                            </li>
+
+
+                            <li>
+                                <a href="guide9.php">Transportation</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+
+
+                    
+
                     </li>
         
                 </ul>
