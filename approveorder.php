@@ -229,7 +229,7 @@
 
 
 
-                    
+
                     </li>
         
                 </ul>
@@ -251,12 +251,13 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Date & Time</th>                                        
-                                        <th>User_ID</th>
+                                        <th>Approve Date & Time</th>                                     
+                                        
                                         <th>User_Trans_ID</th>
-                                        <th>Ewaste_ID</th>
+                                        
                                         <th>Ewaste_Trans_ID</th>
-                                        <th>Product Quantity</th>
+                                        
+                                        
                                         
                                     </tr>
                                 </thead>
@@ -268,10 +269,11 @@
                                             while($row = $query->fetch_assoc()){
                                     ?>
                                     <tr>
-                                        <td><?php echo $row['date']; ?></td>                                        
-                                        <td><?php echo $row['uid']; ?></td>                                        
-                                        <td><?php echo $row['utid']; ?></td>
-                                        <td><?php echo $row['appovedatetime']; ?></td>
+                                        <td><?php echo $row['approvedatetime']; ?></td>                                        
+                                        <td><?php echo $row['ut_id']; ?></td>                                        
+                                        <td><?php echo $row['ect_id']; ?></td>
+                                        
+
                                     </tr>
                                     <?php } } else {?>
                                     <tr><td colspan="6">No details found</td></tr>

@@ -15,7 +15,7 @@
             $query=$db->query("SELECT * FROM pendingorders")->fetch_assoc();
 
 
-        $datetime=$query['datetime'];
+        $date=$query['date'];
         $uid=$query['uid'];
         $utid=$query['utid'];
         $eid=$query['eid'];
@@ -165,6 +165,59 @@
                     <li>
                         <a href="approveorder.php" data-toggle="collapse" data-target="#demo"></i> Approve Orders </a>
                     </li>
+
+
+                     <li>
+                        <a href="oldemployee.php" data-toggle="collapse" data-target="#demo"></i> Past Employee </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1"></i> Guidelines<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo1" class="collapse">
+                            <li>
+                                <a href="guide1.php">Bulk</a>
+                            </li>
+                            <li>
+                                <a href="guide2.php">Collection Center</a>
+                            </li>
+
+                            <li>
+                                <a href="guide3.php">Collection Storage</a>
+                            </li>
+
+                            <li>
+                                <a href="guide4.php">Environmental_dismental</a>
+                            </li>
+
+
+                            <li>
+                                <a href="guide5.php">EPR</a>
+                            </li>
+
+
+                             <li>
+                                <a href="guide6.php">Recyclier</a>
+                            </li>
+
+
+                             <li>
+                                <a href="guide7.php">Refurnisher</a>
+                            </li>
+
+
+                             <li>
+                                <a href="guide8.php">Refurnisher</a>
+                            </li>
+
+
+                            <li>
+                                <a href="guide9.php">Transportation</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+
         
                 </ul>
             </div>
@@ -190,7 +243,9 @@
                                         <th>User_Trans_ID</th>
                                         
                                         <th>Ewaste_Trans_ID</th>
-                                        <th>Approve Date & Time</th>
+                                        
+
+                                        
                                         
 
                                         <th>Action</th>
@@ -203,11 +258,13 @@
                                         if($query->num_rows > 0){ 
                                             while($row = $query->fetch_assoc()){
                                     ?>
-                                    <tr>
-                                        <td><?php echo $row['date']; ?></td>                                        
-                                        <td><?php echo $row['ut_id']; ?></td>                                        
-                                        <td><?php echo $row['ect_id']; ?></td>
-                                        <td><?php echo $row['appovedatetime']; ?></td>
+                                        <tr>
+                                            <td><?php echo $row['date']; ?></td>
+                                            
+                                            <td><?php echo $row['ut_id']; ?></td>
+                                            
+                                            <td><?php echo $row['ect_id']; ?></td>
+                                            
                                         
 
           <td><a href="pendingorders.php?idy=<?php echo $row['ut_id']; ?>" class="btn btn-xs btn-success">Yes</a>

@@ -15,14 +15,13 @@
             $query=$db->query("SELECT * FROM pendingorders")->fetch_assoc();
 
 
-        $date=$query['date'];
-        $uid=$query['uid'];
-        $utid=$query['utid'];
-        $eid=$query['eid'];
-        $etid=$query['etid'];
-        $productdeatils=$query['productdeatils'];
+        $date=$query['appovedatetime'];
+        $uid=$query['ut_id'];      
+        
+        $etid=$query['ect_id'];
+        
 
-        $db->query("INSERT INTO approveorder  VALUES('".$datetime."','".$uid."','".$utid."','".$eid."','".$etid."','".$productdeatils."') ");
+        $db->query("INSERT INTO approveorder  VALUES ('".$date."','".$uid."','".$etid."') ");
         $db->query("DELETE FROM pendingdorders WHERE ut_id=".$id);
     
         
@@ -243,7 +242,9 @@
                                         <th>User_Trans_ID</th>
                                         
                                         <th>Ewaste_Trans_ID</th>
-                                        <th>Approve Date & Time</th>
+                                        
+
+                                        
                                         
 
                                         <th>Action</th>
@@ -262,7 +263,7 @@
                                             <td><?php echo $row['ut_id']; ?></td>
                                             
                                             <td><?php echo $row['ect_id']; ?></td>
-                                            <td><?php echo $row['appovedatetime']; ?></td>
+                                            
                                         
 
           <td><a href="pendingorders.php?idy=<?php echo $row['ut_id']; ?>" class="btn btn-xs btn-success">Yes</a>
