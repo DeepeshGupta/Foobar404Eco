@@ -1,0 +1,1 @@
+select pt.prod_type,po.tquant from product_type pt inner join(SELECT productype, sum(quant) as tquant from productdetails where ut_id in (SELECT ut_id FROM pendingorders WHERE date >= '2017-04-01' AND date <= '2017-04-09' AND approvestatus=1 ) group by productype) po where po.productype= pt.prod_id 
