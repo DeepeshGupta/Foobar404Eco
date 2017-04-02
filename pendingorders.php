@@ -6,16 +6,16 @@
     if(isset($_GET['idn'])){
         $id = $_GET['idn'];
         
-        $db->query("DELETE FROM pendingdetails WHERE uid=".$id);
+        $db->query("DELETE FROM pendingorders WHERE ut_id=".$id);
     }
 
     if(isset($_GET['idy'])){       
 
         $id = $_GET['idy'];
-            $query=$db->query("SELECT * FROM pendingdetails")->fetch_assoc();
+            $query=$db->query("SELECT * FROM pendingorders")->fetch_assoc();
 
 
-        $datetime=$query['datetime'];
+        $date=$query['date'];
         $uid=$query['uid'];
         $utid=$query['utid'];
         $eid=$query['eid'];
@@ -23,7 +23,7 @@
         $productdeatils=$query['productdeatils'];
 
         $db->query("INSERT INTO approveorder  VALUES('".$datetime."','".$uid."','".$utid."','".$eid."','".$etid."','".$productdeatils."') ");
-        $db->query("DELETE FROM pendingdetails WHERE uid=".$id);
+        $db->query("DELETE FROM pendingdorders WHERE ut_id=".$id);
     
         
     }
@@ -185,31 +185,35 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Date & Time</th>                                        
-                                        <th>User_ID</th>
+                                        <th>Date </th>                                        
+                                        
                                         <th>User_Trans_ID</th>
-                                        <th>Ewaste_ID</th>
+                                        
                                         <th>Ewaste_Trans_ID</th>
-                                        <th>Product Quantity</th>
-                                        <th>Status</th>
+                                        <th>Approve Date & Time</th>
+                                        
+
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php 
 
-                                        $query = $db->query("SELECT * FROM pendingdetails");
+                                        $query = $db->query("SELECT * FROM pendingorders");
                                         if($query->num_rows > 0){ 
                                             while($row = $query->fetch_assoc()){
                                     ?>
-                                    <tr>
-                                        <td><?php echo $row['datetime']; ?></td>
-                                        <td><?php echo $row['uid']; ?></td>
-                                        <td><?php echo $row['utid']; ?></td>
-                                        <td><?php echo $row['eid']; ?></td>
-                                        <td><?php echo $row['etid']; ?></td>
-                                        <td><?php echo $row['productdeatils']; ?></td>
-          <td><a href="pendingorders.php?idy=<?php echo $row['uid']; ?>" class="btn btn-xs btn-success">Yes</a>
-          <a href="pendingorders.php?idn=<?php echo $row['uid']; ?>" class="btn btn-xs btn-danger">No</a></td>
+                                        <tr>
+                                            <td><?php echo $row['date']; ?></td>
+                                            
+                                            <td><?php echo $row['ut_id']; ?></td>
+                                            
+                                            <td><?php echo $row['ect_id']; ?></td>
+                                            <td><?php echo $row['appovedatetime']; ?></td>
+                                        
+
+          <td><a href="pendingorders.php?idy=<?php echo $row['ut_id']; ?>" class="btn btn-xs btn-success">Yes</a>
+          <a href="pendingorders.php?idn=<?php echo $row['ut_id']; ?>" class="btn btn-xs btn-danger">No</a></td>
           
                                     </tr>
                                     <?php } } else {?>

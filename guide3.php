@@ -1,37 +1,3 @@
-
-<?php 
-    include 'dbConfig.php'; 
-    session_start();
-
-    if(isset($_GET['idn'])){
-        $id = $_GET['idn'];
-        
-        $db->query("DELETE FROM pendingorders WHERE ut_id=".$id);
-    }
-
-    if(isset($_GET['idy'])){       
-
-        $id = $_GET['idy'];
-            $query=$db->query("SELECT * FROM pendingorders")->fetch_assoc();
-
-
-        $datetime=$query['datetime'];
-        $uid=$query['uid'];
-        $utid=$query['utid'];
-        $eid=$query['eid'];
-        $etid=$query['etid'];
-        $productdeatils=$query['productdeatils'];
-
-        $db->query("INSERT INTO approveorder  VALUES('".$datetime."','".$uid."','".$utid."','".$eid."','".$etid."','".$productdeatils."') ");
-        $db->query("DELETE FROM pendingdorders WHERE ut_id=".$id);
-    
-        
-    }
-    
-
-    
-?>
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -165,6 +131,58 @@
                     <li>
                         <a href="approveorder.php" data-toggle="collapse" data-target="#demo"></i> Approve Orders </a>
                     </li>
+
+                    <li>
+                        <a href="oldemployee.php" data-toggle="collapse" data-target="#demo"></i> Past Employee </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"></i> Guidelines<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="guide1.php">Bulk</a>
+                            </li>
+                            <li>
+                                <a href="guide2.php">Collection Center</a>
+                            </li>
+
+                            <li>
+                                <a href="guide3.php">Collection Storage</a>
+                            </li>
+
+                            <li>
+                                <a href="guide4.php">Environmental_dismental</a>
+                            </li>
+
+
+                            <li>
+                                <a href="guide5.php">EPR</a>
+                            </li>
+
+
+                             <li>
+                                <a href="guide6.php">Recyclier</a>
+                            </li>
+
+
+                             <li>
+                                <a href="guide7.php">Refurnisher</a>
+                            </li>
+
+
+                             <li>
+                                <a href="guide8.php">Refurnisher</a>
+                            </li>
+
+
+                            <li>
+                                <a href="guide9.php">Transportation</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+
         
                 </ul>
             </div>
@@ -179,47 +197,40 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                           Pending Orders</h1>
-
-                           <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Date </th>                                        
-                                        
-                                        <th>User_Trans_ID</th>
-                                        
-                                        <th>Ewaste_Trans_ID</th>
-                                        <th>Approve Date & Time</th>
-                                        
-
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php 
-
-                                        $query = $db->query("SELECT * FROM pendingorders");
-                                        if($query->num_rows > 0){ 
-                                            while($row = $query->fetch_assoc()){
-                                    ?>
-                                    <tr>
-                                        <td><?php echo $row['date']; ?></td>                                        
-                                        <td><?php echo $row['ut_id']; ?></td>                                        
-                                        <td><?php echo $row['ect_id']; ?></td>
-                                        <td><?php echo $row['appovedatetime']; ?></td>
-                                        
-
-          <td><a href="pendingorders.php?idy=<?php echo $row['ut_id']; ?>" class="btn btn-xs btn-success">Yes</a>
-          <a href="pendingorders.php?idn=<?php echo $row['ut_id']; ?>" class="btn btn-xs btn-danger">No</a></td>
-          
-                                    </tr>
-                                    <?php } } else {?>
-                                    <tr><td colspan="7">No Pending Orders Found</td></tr>
-                                    <?php } ?>
-                                </tbody>                                
-                            </table>
+                           Guidelines for Collection and Storage of E-Waste</h1>                          
                         </div>
+
+                        <ul>After assessing their requirement of collection of e-waste, producers may device a collection mechanism which may include take-back through dealers, collection centres or directly through authorised dismantlers/recyclers</ul>
+                        <ul>For collection of e-waste producer may take help of any professional agency like Producer Responsibility Organisation (PRO)/e-waste exchange. Producer may manage a system directly for collection of e-waste by involving relevant stakeholders such as consumer, bulk consumer, informal sector, resident associations, retailers and dealers, etc.</ul>
+                        <ul>Producers may also have an arrangement of collection of e-waste from individual consumers and bulk consumers as well</ul>
+                        <ul>The producers may publicize their collection system which may include details of their collection points, bins and collection vans linked to collection centres, take-back system, deposit refund scheme, e-waste exchange, retailers/dealers and PRO etc. for making collection system effective and workable.</ul>
+        <ul>If take - back system is being provided, then it should be accessible to any citizen located anywhere in the country and may be provided through retailers/dealers or through service centres </ul>
+
+        <h4>The producers may provide consumer/ bulk consumer following details of take-back system:</h4>
+                        <li>Link of their web site where information pertaining to take-back system is available</li>
+                        <li>Toll free number to be available during working hours (10 A.M. to 6 P.M.) for consumers / bulk consumers</li>
+                        <li>Phone number/mobile numbers of grievance redressal in case, toll free number is not working</li>
+                        <li>Details of their dealers, retailers, collection points/bins/pick up vans linked to collection centres for depositing of e-waste by the consumer/bulk consumers if they are part of the take-back system</li>
+                        <li>Details of any incentive scheme for consumers / bulk consumers for returning of e-waste</li>
+                        <li>Details of authorised dismantlers/recyclers who can take-back e-waste on behalf of the producer if dismantlers/recyclers are part of take-back system</li>
+
+                        <ul>Producers may maintain data base of consumers while selling EEE so that consumers/ bulk consumers can be approached for collection of e-waste / end of life products.</ul>
+                        <ul>Every Producer, collection centre, dealer, dismantler, recycler and refurbisher may store the e-waste for a period not exceeding one hundred and eighty (180) days and shall maintain a record of collection, sale, transfer and storage of wastes and make these records available for inspection. The period of storage of one hundred and eighty (180) days may be extended by the concerned SPCBs/PCCs up to three hundred and sixty-five (365) days in case the e-waste needs to be specifically stored for research development of a process for its recycling or reuse.</ul>
+                        <ul>Storage of end of life products may be done in a manner which does not lead to breakage of these products and safe to workers handling such products</ul>
+                        <h4>During storage of e-waste care may be taken:</h4>
+
+
+                        <li>To avoid damage to refrigerators and air-conditioner so as to prevent release of refrigerant gases such as CFC, HFS, HCFC etc. and to prevent spillage of oils (mineral or synthetic oil) and other emissions.</li>
+                        <li>To avoid damage to Cathode Ray Tube</li>
+                        <li>To avoid damage to fluorescent and other mercury containing lamps</li>
+                        <li>To avoid damage to equipment containing asbestos or ceramic fibres to avoid release of asbestos or ceramic fibres in the environment.</li>
+            <ul>After collection of fluorescent and other mercury containing lamps, it should be sent only to a recycler or to a TSDF in case no recycler is available.</ul>
+            <ul>Loading, transportation, unloading and storage of E-Waste / end of life products should be
+carried out in such a way that its end use such as re-use after refurbishing or recycling or
+recovery is unaffected.
+</ul>
+        <ul>The storage area should have fire protection system in place.</ul>                      
+
 
                     </div>
                 </div>
